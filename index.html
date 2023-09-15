@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>TR Coder Mobile app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/vaakash/socializer@2f749eb/css/socializer.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
+  <link rel="stylesheet" href="./include/custom-search-filter/style.css">
+
+
+  <!-- MUSIC PLAYER -->
+  <link rel='stylesheet' href="./include/Music-Player/styles.css">
+
+  <audio id="audio-player" controls autoplay></audio>
+  <button class="ply-btn" id="ply-btn">
+  <i class="fas fa-pause"></i>
+  </button>
+  
+  <script src="./include/Music-Player/config.js"></script>
+  <script src="./include/Music-Player/script.js"></script>
+  
+
+  <!-- remove 000webhost Banner --> 
+  <style>
+  img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+  display: none;
+  }
+  
+  .disclaimer{
+  display:none;
+  }
+  </style>
+  <!-- CSS -->
+  <style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  /* HEADINGS */
+  
+  h1, p {
+  color: #fff;
+  text-align: center;
+  line-height: 1.4;
+  }
+  
+  h1 {
+  font-size: 2.2rem;
+  }
+  
+  h2 {
+  color: #000;
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  }
+  
+  /* BASIC SETUP */
+  
+  .page-wrapper {
+  width: 100%;
+  height: auto;
+  }
+  
+  .nav-wrapper {
+  width: 100%;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  }
+  
+  .grad-bar {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+  background-size: 400% 400%;
+  -webkit-animation: gradbar 15s ease infinite;
+  -moz-animation: gradbar 15s ease infinite;
+  animation: gradbar 15s ease infinite;
+  }
+  
+  /* NAVIGATION */
+  
+  .navbar {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  height: 50px;
+  overflow: hidden;
+  }
+  
+  .navbar img {
+  height: 16px;
+  width: auto;
+  justify-self: start;
+  margin-left: 20px;
+  }
+  
+  .navbar ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+  justify-self: end;
+  
+  }
+  
+  .nav-item a {
+  color: #000;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+  }
+  
+  .nav-item a:hover {
+  color: #3498db;
+  }
+  
+  /* SECTIONS */
+  
+  .headline {
+  width: 100%;
+  height: 50vh;
+  min-height: 350px;
+  background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.7)), url('./images/photo-1435224668334-0f82ec57b605.jpeg');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  }
+  
+  .features {
+  width: 100%;
+  height: auto;
+  background-color: #f1f1f1;
+  display: flex;
+  padding: 50px 20px;
+  justify-content: space-around;
+  }
+  
+  .feature-container {
+  flex-basis: 30%;
+  margin-top: 10px;
+  }
+  
+  .feature-container p {
+  color: #000;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  }
+  
+  .feature-container img {
+  width: 100%;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 15px;
+  }
+  
+  /* SEARCH FUNCTION */
+  
+  #search-icon {
+  font-size: 0.9rem;
+  margin-top: 3px;
+  margin-left: 15px;
+  transition: color 0.3s ease-out;
+  }
+  
+  #search-icon:hover {
+  color: #3498db;
+  cursor: pointer;
+  }
+  
+  .search {
+  transform: translate(-35%);
+  -webkit-transform: translate(-35%);
+  transition: transform 0.7s ease-in-out;
+  color: #3498db;
+  }
+  
+  .no-search {
+  transform: translate(0);
+  transition: transform 0.7s ease-in-out;
+  }
+  
+  .search-input {
+  position: absolute;
+  top: -4px;
+  right: -125px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.6s ease;
+  }
+  
+  .search-active {
+  opacity: 1;
+  z-index: 0;
+  }
+  
+  input {
+  border: 0;
+  border-left: 1px solid #ccc;
+  border-radius: 0; /* FOR SAFARI */
+  outline: 0;
+  padding: 5px;
+  }
+  
+  /* MOBILE MENU & ANIMATION */
+  
+  .menu-toggle .bar{
+  width: 25px;
+  height: 3px;
+  background-color: #3f3f3f;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-toggle {
+  justify-self: end;
+  margin-right: 25px;
+  display: none;
+  }
+  
+  .menu-toggle:hover{
+  cursor: pointer;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(2){
+  opacity: 0;
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(1){
+  -webkit-transform: translateY(8px) rotate(45deg);
+  -ms-transform: translateY(8px) rotate(45deg);
+  -o-transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
+  }
+  
+  #mobile-menu.is-active .bar:nth-child(3){
+  -webkit-transform: translateY(-8px) rotate(-45deg);
+  -ms-transform: translateY(-8px) rotate(-45deg);
+  -o-transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  /* KEYFRAME ANIMATIONS */
+  
+  @-webkit-keyframes gradbar {
+  0% {
+  background-position: 0% 50%
+  }
+  50% {
+  background-position: 100% 50%
+  }
+  100% {
+  background-position: 0% 50%
+  }
+  }
+  
+  @-moz-keyframes gradbar {
+  0% {
+  background-position: 0% 50%
+  }
+  50% {
+  background-position: 100% 50%
+  }
+  100% {
+  background-position: 0% 50%
+  }
+  }
+  
+  @keyframes gradbar {
+  0% {
+  background-position: 0% 50%
+  }
+  50% {
+  background-position: 100% 50%
+  }
+  100% {
+  background-position: 0% 50%
+  }
+  }
+  
+  /* Media Queries */
+  
+  /* Mobile Devices - Phones/Tablets */
+  
+  @media only screen and (max-width: 720px) { 
+  .features {
+  flex-direction: column;
+  padding: 50px;
+  }
+  
+  /* MOBILE HEADINGS */
+  
+  h1 {
+  font-size: 1.9rem;
+  }
+  
+  h2 {
+  font-size: 1rem;
+  }
+  
+  p {
+  font-size: 0.8rem;
+  }
+  
+  /* MOBILE NAVIGATION */
+  
+  .navbar ul {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  justify-content: start;
+  top: 55px;
+  background-color: #fff;
+  width: 100%;
+  height: calc(100vh - 55px);
+  transform: translate(-101%);
+  text-align: center;
+  overflow: hidden;
+  }
+  
+  .navbar li {
+  padding: 15px;
+  }
+  
+  .navbar li:first-child {
+  margin-top: 50px;
+  }
+  
+  .navbar li a {
+  font-size: 1rem;
+  }
+  
+  .menu-toggle, .bar {
+  display: block;
+  cursor: pointer;
+  }
+  
+  .mobile-nav {
+  transform: translate(0%)!important;
+  }
+  
+  /* SECTIONS */
+  
+  .headline {
+  height: 20vh;
+  }
+  
+  .feature-container p {
+  margin-bottom: 25px;
+  }
+  
+  .feature-container {
+  margin-top: 20px;
+  }
+  
+  .feature-container:nth-child(2) {
+  order: -1;
+  }
+  
+  /* SEARCH DISABLED ON MOBILE */
+  
+  #search-icon {
+  display: none;
+  }
+  
+  .search-input {
+  display: none;
+  }
+  
+  }
+  </style>
+<!-- jquery cdn -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="page-wrapper">
+<div class="grad-bar" style="position:fixed;"></div>
+
+<!--
+ <div class="nav-wrapper">
+  <div class="grad-bar"></div>
+  <nav class="navbar">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c8/Bluestar_%28bus_company%29_logo.svg/1280px-Bluestar_%28bus_company%29_logo.svg.png" alt="Company Logo">
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <ul class="nav no-search">
+      <li class="nav-item"><a href="#">Home</a></li>
+      <li class="nav-item"><a href="#">About</a></li>
+      <li class="nav-item"><a href="#">Work</a></li>
+      <li class="nav-item"><a href="#">Careers</a></li>
+      <li class="nav-item"><a href="#">Contact Us</a></li>
+      <i class="fas fa-search" id="search-icon"></i>
+      <input class="search-input" type="text" placeholder="Search..">
+    </ul>
+  </nav>
+  </div>
+-->
+
+  
+  <section class="headline" id="headline">
+  <script>
+    function picGIF() {
+    var bgm = ['./gifs/1.webp','./gifs/2.webp', './gifs/3.webp'];
+ 
+    $('.headline').css({
+  'width': '100%',
+  'height': '50vh',
+  'min-height': '350px',
+  'background' : 'url('+ bgm[Math.floor(Math.random() * bgm.length)] + ') no-repeat',
+  'background-size': 'cover',
+  'display': 'flex',
+  'flex-direction': 'column',
+  'justify-content': 'center',
+
+  'background-repeat': 'no-repeat',
+  'background-size': 'cover',
+      });
+}
+picGIF();
+  </script>
+
+    <h1>Hi!</h1>
+    <p>Welcome to TR Coder world</p>
+
+
+   <script src="https://form.jotform.com/static/feedback2.js" type="text/javascript">
+   new JotformFeedback({
+   formId: "222351082093448",
+   buttonText: "Feedback",
+   base: "https://form.jotform.com/",
+   background: "#F59202",
+   fontColor: "#FFFFFF",
+   buttonSide: "left",
+   buttonAlign: "center",
+   type: false,
+   width: 700,
+   height: 500,
+   isCardForm: false
+   });
+   </script>
+   
+   <div class="searchbox">
+   <div class="header">
+ <!--  <h1>Search</h1> -->
+   <input type="text" id="value" placeholder="Type to search...">
+   </div>
+   <center>
+    <!-- https://www.aakashweb.com/apps/social-buttons-generator/ -->
+    <div class="socializer a sr-32px sr-opacity sr-icon-white sr-pad">
+      <span class="sr-youtube">
+        <a href="https://www.youtube.com/channel/UCMMS04AArq9iMUnXFsT8ybA" target="_blank" title="Youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </span>
+      <span class="sr-telegram">
+        <a href="https://telegram.me/trcoderontelegram" target="_blank" title="Telegram">
+          <i class="fab fa-telegram-plane"></i>
+        </a>
+      </span>
+      <span class="sr-email">
+        <a href="mailto:tarunraghav202@gmail.com" target="_blank" title="Email">
+          <i class="fa fa-envelope"></i>
+        </a>
+      </span>
+      <span class="sr-facebook">
+        <a href="https://m.facebook.com/trcoderpage" target="_blank" title="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </span>
+      <span class="sr-instagram">
+        <a href="https://www.instagram.com/trcoder_on_insta/" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </span>
+    </div>
+  </center>
+  </section>
+  
+  
+    <div id="TR-Coder-player-page" style="display:none;">
+    
+  <!-- TR Coder Player Page-->
+  <!-- Config Script -->
+  <script>
+  //Get URL query string
+  function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i = 0; i < vars.length; i++) {
+  var pair = vars[i].split("=");
+  if (pair[0] == variable) { return pair[1]; }
+  }
+  return (false);
+  }
+  
+  // URL decode (function created by TR Coder)
+  function proURIDecoder(val)
+  {
+  val=val.replace(/\+/g, '%20');
+  var str=val.split("%");
+  var cval=str[0];
+  for (var i=1;i<str.length;i++)
+  {
+  cval+=String.fromCharCode(parseInt(str[i].substring(0,2),16))+str[i].substring(2);
+  }
+  return cval;
+  }
+  
+  // Get URL Parameter value then decode it
+  function resultValue(qname){ 
+  var query = getQueryVariable(qname);
+  var decode = proURIDecoder(query);
+  return decode;
+  }
+  
+  // resultValue("");
+  </script>
+  
+  <script>
+  var ytVideoTitle = resultValue("ytVideoTitle");
+  var ytVideoFullURL = resultValue("ytVideoFullURL");
+  var videoLoadingTime = resultValue("videoLoadingTime"); // in seconds
+  
+  var liveDemoDefaultCountTime = resultValue("liveDemoDefaultCountTime"); // in seconds
+  var liveDemoSrc = resultValue("liveDemoSrc");
+  
+  var DownlodFileName = resultValue("DownlodFileName");
+  var DownloadFileType = resultValue("DownloadFileType");
+  var DownloadFileSize = resultValue("DownloadFileSize"); //optional
+  var ShowDownloadFileSize = resultValue("ShowDownloadFileSize"); // true or false
+  var DownloadDefaultCountTime = resultValue("DownloadDefaultCountTime"); // in seconds
+  var DownloadSrc = resultValue("DownloadSrc");
+  </script>
+  
+  <!-- CSS -->
+  <!-- <link rel="stylesheet" href="css/style.css"> -->
+  <style>
+  body{
+  background-image: linear-gradient(-135deg, #5A9FC7 0%, #6DC2D7 100%);
+  color: #FFF;
+  }
+  
+  .embed {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 */
+  padding-top: 25px;
+  }
+  .embed iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  /*pointer-events: none;*/
+  }
+  
+  .input-transparent{
+  font-size: 16px;
+  line-height: 1.5;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  
+  } 
+  
+  .input-transparent::placeholder{
+  color: #FFF;
+  }
+  
+  .input-transparent:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 100);
+  text-shadow: none;  
+  }
+  
+  .bg-gradient{
+  /*  padding: 40px;
+  margin-left: -40px;
+  margin-right: -40px;*/
+  width: 100%;
+  background-image: linear-gradient(-135deg, #5A9FC7 0%, #6DC2D7 100%);
+  }
+  
+  
+  /*
+  p { 
+  padding: 20px;
+  }
+  */
+  p.countdown {
+  color: red; font-size: 24px;
+  }
+  .live-demo{
+  background:red;
+  border:none;
+  padding:10px;
+  color:#fff;
+  }
+  .download{
+  background:red;
+  border:none;
+  padding:10px;
+  color:#fff;
+  }
+  
+  
+  .slidecontainer {
+  width: 100%; /* Width of the outside container */
+  }
+  
+  /* The slider itself */
+  .slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  /* 
+  opacity: ; Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #FF3333; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  }
+  .slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #04AA6D; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  }
+  
+  
+  .btn {
+  background:red;
+  color:#333333;
+  border: 1px solid silver;
+  }        
+  .btn:hover {       
+  color:white;
+  border: 2px solid white;
+  }
+  
+  
+  main {
+  margin-left: 1em;
+  margin-right: 1em;
+  }
+  
+  main > section { margin-bottom: 1em; }
+  
+  main > section div.framed > div {
+  border: 1px solid black;
+  margin-bottom: 1ex;
+  padding: 1ex;
+  }
+  
+  main > section button { padding: 0.5ex 1em; }
+  
+  main > section input[type="range"] { width: 400px; }
+  
+  main > section label[for^="YouTube-player-"] { position: absolute; }
+  
+  main > section textarea {
+  height: 9ex;
+  margin: 0;
+  padding: 0;
+  vertical-align: top;
+  width: 99%;
+  }
+  
+  
+  .center { text-align: center; }
+  
+  .margin-left-m { margin-left: 1em; }
+  .margin-right-m { margin-right: 1em; }
+  
+  .nowrap { white-space: nowrap; }
+  
+  
+  #indicator-display {
+  color: white;
+  /* background-color: #f0f0f0; */
+  background-image: linear-gradient(-135deg, #5A9FC7 0%, #6DC2D7 100%);
+  border-radius: 3ex;
+  display: inline-block;
+  float: right;
+  font-family: monospace;
+  height: 2ex;
+  line-height: 2ex;
+  margin: 1ex 1ex 0 0;
+  padding: 1ex;
+  text-align: center;
+  vertical-align: middle;
+  width: 2ex;
+  /*    border: 1px solid black; */
+  }
+  
+  #YouTube-video-id { font-family: monospace; }
+  
+  
+  @media (max-width: 600px) {
+  main > section iframe {
+  height: 240px;
+  width: 320px;
+  }
+  
+  main > section input[type="range"] { width: 320px; }
+  }
+  
+  @media (max-width: 400px) {
+  main > section iframe {
+  height: 200px;
+  width: 200px;
+  }
+  
+  main > section input[type="range"] { width: 200px; }
+  }
+  </style>
+  
+  <!-- <link rel="stylesheet" href="css/volume-progress-bar.css"> -->
+  <style>
+  .body {
+  background: #2b1159;
+  color: #FF3333;
+  font-family: sans-serif;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  }
+  
+  .volume {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  .volume input[type=range] {
+    /* 
+  display: ;
+  */
+  }
+  .volume .icon-size {
+  font-size: 2rem;
+  }
+  .volume .bar-hoverbox {
+  padding: 10px 15px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  }
+  .volume .bar-hoverbox:hover {
+  opacity: 1;
+  cursor: pointer;
+  }
+  .volume .bar {
+  background: #999;
+  height: 7px;
+  width: 120px;
+  border-radius: 15px;
+  overflow: hidden;
+  pointer-events: none;
+  }
+  .volume .bar .bar-fill {
+  background: #FF3333;
+  width: 0%;
+  height: 100%;
+  background-clip: border-box;
+  pointer-events: none;
+  }
+  </style>
+  
+  <!-- font-awesome cdn -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+  
+  </head>
+  <body>
+  <!--    <h2>YouTube <code>iframe</code> embed</h2>
+  -->
+  
+  <div class="embed">
+  <div id="YouTube-player"></div>
+  <center>
+  <!-- Show text on loading... -->
+  <p id="loading" style="color: white; background: #333333; text-align: center; border: 1px solid silver; border-radius: 10px; width:100px;"></p>
+  </center>
+  </div>
+  <main id="click-permission-1">
+  <div class="slidecontainer">
+  <input id="YouTube-player-progress" class="slider" id="myRange" type="range" value="0" min="0" max="100" onchange="youTubePlayerCurrentTimeChange(this.value);" oninput="youTubePlayerCurrentTimeSlide();">
+  <label for="YouTube-player-progress"></label>
+  </div>
+  </main>
+  <div class="volume">
+  <div class="icon">
+  <i class="fa fa-volume-up icon-size" aria-hidden="true"></i>
+  </div>
+  <input id="YouTube-player-volume" class="volume-range" type="range" value="100" min="0" max="100" onchange="youTubePlayerVolumeChange(this.value);">  
+  </div>
+  <main id="click-permission-2">
+  <section>
+  <div class="center">
+  <div>
+  <!-- change video src buttons -->
+  <!-- 
+  <span class="nowrap">
+  <button onclick="document.getElementById('YouTube-video-id').value='yG0oBPtyNb0'; youTubePlayerChangeVideoId();" title="In the summertime (Mungo Jerry)">1</button>
+  <button onclick="document.getElementById('YouTube-video-id').value='F2Ug3VkFuDw'; youTubePlayerChangeVideoId();" title="Peter Popoff pris la main dans le sac par James Randi">2</button>
+  <button onclick="document.getElementById('YouTube-video-id').value='1X9RvuSuU_Y'; youTubePlayerChangeVideoId();" title="The Steven Seagal Show #002">3</button>
+  <button onclick="document.getElementById('YouTube-video-id').value='LHdsMXEwLNE'; youTubePlayerChangeVideoId();" title="The Man from Earth (Richard Schenkman)">4</button>
+  </span>
+  -->
+  <span class="nowrap">
+  <button id="btn-play" class="btn" onclick="youTubePlayerPlay(); pause_music();"><i class="fa fa-play" aria-hidden="true"></i></button>
+  <button id="btn-pause" class="btn" onclick="youTubePlayerPause(); "><i class="fa fa-pause" aria-hidden="true"></i></button>
+  <button id="btn-stop" class="btn" onclick="youTubePlayerStop();"><i class="fa fa-stop" aria-hidden="true"></i></button>
+  </span>
+  </div>
+  </div>
+  <div class="framed">
+  <div id="Download-links"></div>
+  <div id="YouTube-player-infos"></div>
+  <div id="YouTube-player-errors"></div>
+  <div id="YouTube-player-fixed-infos"></div>
+  </div>
+  </section>
+  <!--
+  <section>
+  <h2>References</h2>
+  <ul>
+  <li>
+  This example on my website:
+  <strong><a href="http://www.opimedia.be/DS/webdev/YouTube/">YouTube <abbr>API</abbr> example</a></strong>
+  </li>
+  <li>
+  YouTube:
+  <ul>
+  <li><a href="https://developers.google.com/youtube/iframe_api_reference"><em>YouTube Player <abbr>API</abbr> Reference for <code>iframe</code> Embeds</em></a></li>
+  <li><a href="https://developers.google.com/youtube/player_parameters"><em>YouTube Embedded Players and Player Parameters</em></a></li>
+  </ul>
+  </li>
+  </ul>
+  </section>
+  -->
+  <div class="bg-gradient">
+  <span class="nowrap margin-left-m margin-right-m">
+  <label for="YouTube-video-id" style="color:white;">videoId</label>:
+  <input  id="YouTube-video-id" class="input-transparent" type="text" placeholder="Search video by ID" value="yG0oBPtyNb0" size="12" pattern="[_\-0-9A-Za-z]{11}" onchange="youTubePlayerChangeVideoId();">
+  </span>
+  </div>
+  </main>
+  
+  <!-- JS  Scripts -->
+  
+  <!-- <script  src="js/script.js"></script> -->
+  <script>
+  
+  //Triger Play Button on Page Load
+  window.onload = function () {
+  someFunction();
+  }
+  function someFunction() {
+  var seconds_left = videoLoadingTime;
+  var interval = setInterval(function () {
+  document.getElementById('loading').innerHTML = "Loading... " + --seconds_left + "";
+  if (seconds_left <= 0) {
+  //alert('The video is ready to play.');
+  /* triger play button */ 
+  $("#btn-play").click();
+  $('#loading').fadeOut('slow');
+  
+  clearInterval(interval);
+  }
+  }, 1000);
+  }
+  
+  
+  // Div Download links- Html Contents
+  // File Size (show/hide)
+  if(ShowDownloadFileSize == "TRUE"){
+  var FileSizeHTML = `File Size :  <strong>` +DownloadFileSize+ `</strong><br><br/>`;
+  }else{
+  FileSizeHTML = `<br>`;
+  }
+  document.getElementById("Download-links").innerHTML = `<strong>SOURCE CODE -</strong><br>
+  File Name : <strong>` +DownlodFileName+ `</strong><br>
+  File Type :  <strong>` +DownloadFileType+ `</strong><br>
+  ` +FileSizeHTML+ `
+  <button id="live-demo" class="live-demo">Live Demo</button>    
+  <button id="download" class="download">Download</button>  
+  <p class="countdown"/>
+  <p class="link"></p>`;
+  
+  
+  //Youtube URL string filter get ID
+  var getytURL = ytVideoFullURL;
+  var  ytURLreplace = getytURL.replace("shorts/", "embed/");
+  var yturl = ytURLreplace;
+  var yturlsplit= yturl.split(/^.*(youtu.be\/|v\/|embed\/|watch\?|youtube.com\/user\/[^#]*#([^\/]*?\/)*)\??v?=?([^#\&\?]*).*/);
+  var ytID = (yturlsplit[3]);
+  
+  // Change input ID value
+  document.getElementById("YouTube-video-id").value = ytID;
+  
+  
+  /**
+  * JavaScript code for the "YouTube API example"
+  * http://www.opimedia.be/DS/webdev/YouTube/
+  *
+  * (c) Olivier Pirson --- 2016 January, 26
+  */
+  
+  /**
+  * YT.Player initialized by onYouTubeIframeAPIReady().
+  */
+  var youTubePlayer;
+  
+  
+  
+  /**
+  * Function called by https://www.youtube.com/iframe_api
+  * when it is loaded.
+  *
+  * Initialized YouTube iframe with the value of #YouTube-video-id as videoId
+  * and the value of #YouTube-player-volume as volume.
+  *
+  * Adapted from:
+  * https://developers.google.com/youtube/iframe_api_reference
+  * https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
+  */
+  function onYouTubeIframeAPIReady() {
+  'use strict';
+  
+  var inputVideoId = document.getElementById('YouTube-video-id');
+  var videoId = inputVideoId.value;
+  var suggestedQuality = 'tiny';
+  var height = 300;
+  var width = 400;
+  var youTubePlayerVolumeItemId = 'YouTube-player-volume';
+  
+  
+  function onError(event) {
+  youTubePlayer.personalPlayer.errors.push(event.data);
+  }
+  
+  
+  function onReady(event) {
+  var player = event.target;
+  
+  /*    player.loadVideoById({suggestedQuality: suggestedQuality,  */
+  player.cueVideoById( {suggestedQuality: suggestedQuality,                     
+  videoId: videoId
+  
+  });
+  player.pauseVideo();
+  youTubePlayerDisplayFixedInfos();
+  }
+  
+  
+  function onStateChange(event) {
+  var volume = Math.round(event.target.getVolume());
+  var volumeItem = document.getElementById(youTubePlayerVolumeItemId);
+  
+  if (volumeItem && (Math.round(volumeItem.value) != volume)) {
+  volumeItem.value = volume;
+  }
+  }
+  
+  
+  youTubePlayer = new YT.Player('YouTube-player',
+  {videoId: videoId,
+  height: height,
+  width: width,
+  playerVars: {                     
+  'enablejsapi': 1,           
+  'start': 1,
+  'autoplay': 1, // Auto-play
+  'controls': 1, // Turn off controls
+  'showsearch': 0, // Turn off search
+  'showinfo': 1, // Hide the video title
+  'modestbranding': 1, // Hide all YouTube branding
+  'loop': 1, // Loop video
+  'fs': 1, // Remove full screen button
+  'cc_load_policy': 1, // Turn off closed captions
+  'iv_load_policy': 3, // Turn off annotations
+  'autohide': 1, // Turn off controls auto-hiding
+  'rel': 0, // Turn off related content on pause
+  'disablekb': 1 // Turn off keyboard controls
+  },
+  events: {'onError': onError,
+  'onReady': onReady,
+  'onStateChange': onStateChange
+  }
+  });
+  
+  // Add private data to the YouTube object
+  youTubePlayer.personalPlayer = {'currentTimeSliding': false,
+  'errors': []};
+  }
+  
+  
+  /**
+  * :return: true if the player is active, else false
+  */
+  function youTubePlayerActive() {
+  'use strict';
+  
+  return youTubePlayer && youTubePlayer.hasOwnProperty('getPlayerState');
+  }
+  
+  
+  /**
+  * Get videoId from the #YouTube-video-id HTML item value,
+  * load this video, pause it
+  * and show new infos.
+  */
+  function youTubePlayerChangeVideoId() {
+  'use strict';
+  
+  var inputVideoId = document.getElementById('YouTube-video-id');
+  var videoId = inputVideoId.value;
+  
+  youTubePlayer.cueVideoById({suggestedQuality: 'tiny',
+  videoId: videoId
+  });
+  youTubePlayer.pauseVideo();
+  youTubePlayerDisplayFixedInfos();
+  }
+  
+  
+  /**
+  * Seek the video to the currentTime.
+  * (And mark that the HTML slider *don't* move.)
+  *
+  * :param currentTime: 0 <= number <= 100
+  */
+  function youTubePlayerCurrentTimeChange(currentTime) {
+  'use strict';
+  
+  youTubePlayer.personalPlayer.currentTimeSliding = false;
+  if (youTubePlayerActive()) {
+  youTubePlayer.seekTo(currentTime*youTubePlayer.getDuration()/100, true);
+  }
+  }
+  
+  
+  /**
+  * Mark that the HTML slider move.
+  */
+  function youTubePlayerCurrentTimeSlide() {
+  'use strict';
+  
+  youTubePlayer.personalPlayer.currentTimeSliding = true;
+  }
+  
+  
+  /**
+  * Display embed code to #YouTube-player-fixed-infos.
+  */
+  function youTubePlayerDisplayFixedInfos() {
+  'use strict';
+  
+  if (youTubePlayerActive()) {
+  document.getElementById('YouTube-player-fixed-infos').innerHTML = (
+  'Embed code: <textarea readonly>' + youTubePlayer.getVideoEmbedCode() + '</textarea>'
+  );
+  }
+  }
+  
+  
+  /**
+  * Display
+  *   some video informations to #YouTube-player-infos,
+  *   errors to #YouTube-player-errors
+  *   and set progress bar #YouTube-player-progress.
+  */
+  function youTubePlayerDisplayInfos() {
+  'use strict';
+  
+  if ((this.nbCalls === undefined) || (this.nbCalls >= 3)) {
+  this.nbCalls = 0;
+  }
+  else {
+  ++this.nbCalls;
+  }
+  
+  var indicatorDisplay = '<span id="indicator-display" title="timing of informations refreshing">' + ['|', '/', String.fromCharCode(8212), '\\'][this.nbCalls] + '</span>';
+  
+  if (youTubePlayerActive()) {
+  var state = youTubePlayer.getPlayerState();
+  
+  var current = youTubePlayer.getCurrentTime();
+  var duration = youTubePlayer.getDuration();
+  var currentPercent = (current && duration
+  ? current*100/duration
+  : 0);
+  
+  var fraction = (youTubePlayer.hasOwnProperty('getVideoLoadedFraction')
+  ? youTubePlayer.getVideoLoadedFraction()
+  : 0);
+  
+  var url = youTubePlayer.getVideoUrl();
+  
+  if (!current) {
+  current = 0;
+  }
+  if (!duration) {
+  duration = 0;
+  }
+  
+  var volume = youTubePlayer.getVolume();
+  
+  if (!youTubePlayer.personalPlayer.currentTimeSliding) {
+  document.getElementById('YouTube-player-progress').value = currentPercent;
+  }
+  
+  document.getElementById('YouTube-player-infos').innerHTML = (
+  indicatorDisplay
+  + 'URL: <a class="url" href="' + url + '">' + url + '</a><br>'
+  + 'Quality: <strong>' + youTubePlayer.getPlaybackQuality() + '</strong>'
+  + ' &mdash; Available quality: <strong>' + youTubePlayer.getAvailableQualityLevels() + '</strong><br>'
+  + 'State <strong>' + state + '</strong>: <strong>' + youTubePlayerStateValueToDescription(state) + '</strong><br>'
+  + 'Loaded: <strong>' + (fraction*100).toFixed(1) + '</strong>%<br>'
+  + 'Duration: <strong>' + current.toFixed(2) + '</strong>/<strong id="video_duration">' + duration.toFixed(2) + '</strong>s = <strong>' + currentPercent.toFixed(2) + '</strong>%<br>'
+  + 'Volume: <strong>' + volume + '</strong>%'
+  );
+  
+  document.getElementById('YouTube-player-errors').innerHTML = '<div>Errors: <strong>' + youTubePlayer.personalPlayer.errors + '</strong></div>';
+  }
+  else {
+  document.getElementById('YouTube-player-infos').innerHTML = indicatorDisplay;
+  }
+  }
+  
+  
+  /**
+  * Pause.
+  */
+  function youTubePlayerPause() {
+  'use strict';
+  
+  if (youTubePlayerActive()) {
+  youTubePlayer.pauseVideo();
+  }
+  }
+  
+  
+  /**
+  * Play.
+  */
+  function youTubePlayerPlay() {
+  'use strict';
+  
+  if (youTubePlayerActive()) {
+  youTubePlayer.playVideo();
+  }
+  }
+  
+  
+  /**
+  * Return the state decription corresponding of the state value.
+  * If this value is incorrect, then return unknow.
+  *
+  * See values:
+  * https://developers.google.com/youtube/iframe_api_reference#Playback_status
+  *
+  * :param number: any
+  * :param unknow: any
+  *
+  * :return: 'unstarted', 'ended', 'playing', 'paused', 'buffering', 'video cued' or unknow
+  */
+  function youTubePlayerStateValueToDescription(state, unknow) {
+  'use strict';
+  
+  var STATES = {'-1': 'unstarted',   // YT.PlayerState.
+  '0': 'ended',        // YT.PlayerState.ENDED
+  '1': 'playing',      // YT.PlayerState.PLAYING
+  '2': 'paused',       // YT.PlayerState.PAUSED
+  '3': 'buffering',    // YT.PlayerState.BUFFERING
+  '5': 'video cued'};  // YT.PlayerState.CUED
+  
+  return (state in STATES
+  ? STATES[state]
+  : unknow);
+  }
+  
+  
+  /**
+  * Stop.
+  */
+  function youTubePlayerStop() {
+  'use strict';
+  
+  if (youTubePlayerActive()) {
+  youTubePlayer.stopVideo();
+  youTubePlayer.clearVideo();
+  }
+  }
+  
+  
+  /**
+  * Change the volume.
+  *
+  * :param volume: 0 <= number <= 100
+  */
+  function youTubePlayerVolumeChange(volume) {
+  'use strict';
+  
+  if (youTubePlayerActive()) {
+  youTubePlayer.setVolume(volume);
+  }
+  }
+  
+  
+  
+  /**
+  * Main
+  */
+  (function () {
+  'use strict';
+  
+  function init() {
+  // Load YouTube library
+  var tag = document.createElement('script');
+  
+  tag.src = 'https://www.youtube.com/iframe_api';
+  
+  var first_script_tag = document.getElementsByTagName('script')[0];
+  
+  first_script_tag.parentNode.insertBefore(tag, first_script_tag);
+  
+  
+  // Set timer to display infos
+  setInterval(youTubePlayerDisplayInfos, 1000);
+  }
+  
+  
+  if (window.addEventListener) {
+  window.addEventListener('load', init);
+  } else if (window.attachEvent) {
+  window.attachEvent('onload', init);
+  }
+  }());
+  </script>
+  
+  <!-- <script  src="js/live-demo-button.js"></script> -->
+  <script>
+  //Live Demo Button
+  $(document).ready(function(){  
+  // $(".live-demo").on("click", function () {
+  //trigger stop button
+  //$("#btn-stop").click();  
+  var $countdown = $("p.countdown"),
+  $link = $("p.link"),
+  $button = $(".live-demo");
+  $button.click(function() { 
+  //trigger stop button
+  $("#btn-stop").click();
+  var startplay = false;
+  if (!startplay) {
+  //trigger play button
+  $("#btn-play").click();
+  
+  //Disable some clicks
+  document.getElementById("YouTube-player").style['pointer-events'] = 'none';
+  document.getElementById("click-permission-1").style['pointer-events'] = 'none';
+  document.getElementById("click-permission-2").style['pointer-events'] = 'none';
+  alert("generating link...");
+  var startplay = true;
+  }
+  
+  // Get Video duration
+  var getduration = ($("#video_duration").text());
+  var videoduration = getduration.replace( /^\D+/g, '');
+  var videoduration = Math.trunc(videoduration);
+
+  if(videoduration === "0"){
+    var videoduration = liveDemoDefaultCountTime;
+  }
+
+  if(liveDemoDefaultCountTime === "0"){
+    var videoduration = videoduration;
+  }else {
+    var videoduration = liveDemoDefaultCountTime;
+  }
+
+   //alert(videoduration);
+   //alert(liveDemoDefaultCountTime);
+
+  //    var count = 10,        
+  var count = videoduration,
+  countdown = setInterval(function() {          
+  $(".live-demo").hide();
+  $countdown.html("Wait " + count + " seconds to get Live Demo Link!").show("flast"); 
+  
+  
+  if (count == 0) {
+  
+  //Enable all clicks
+  document.getElementById("YouTube-player").style['pointer-events'] = 'auto';
+  document.getElementById("click-permission-1").style['pointer-events'] = 'auto';         
+  document.getElementById("click-permission-2").style['pointer-events'] = 'auto';         
+  
+  $(".live-demo").hide();
+  $countdown.hide();
+  // $link.html('<a href="' +liveDemoSrc+ '">Go to Live Demo</a>');
+  
+  $link.html('<strong>Congratulations!</strong> <br> ' +
+  '<strong>redirecting to your destination link in 10s...</strong> <br> ' + '<a href="' +liveDemoSrc+ '">Go to Direct Link</a>');
+setTimeout(function() {
+    window.location.replace(liveDemoSrc)
+},10000);  //change the time value accordingly
+
+  clearInterval(countdown);
+  } 
+  count--; 
+  }, 1000);
+  });
+  // });
+  });
+  </script>
+  
+  <!-- <script  src="js/download-button.js"></script> -->
+  <script>
+  //Download Button
+  $(document).ready(function(){  
+  //$(".download").on("click", function () {
+  //trigger stop button
+  //$("#btn-stop").click();  
+  var $countdown = $("p.countdown"),
+  $link = $("p.link"),
+  $button = $(".download");
+  $button.click(function() { 
+  //trigger stop button
+  $("#btn-stop").click();
+  var startplay = false;
+  if (!startplay) {
+  //trigger play button
+  $("#btn-play").click();
+  
+  //Disable some clicks
+  document.getElementById("YouTube-player").style['pointer-events'] = 'none';
+  document.getElementById("click-permission-1").style['pointer-events'] = 'none';
+  document.getElementById("click-permission-2").style['pointer-events'] = 'none';
+  alert("generating link...")  
+  var startplay = true;
+  }
+  
+  // Get Video duration
+  var getduration = ($("#video_duration").text());
+  var videoduration = getduration.replace( /^\D+/g, '');
+  var videoduration = Math.trunc(videoduration);
+  
+  if(videoduration === "0"){
+    var videoduration = DownloadDefaultCountTime;
+  }
+
+  if(DownloadDefaultCountTime === "0"){
+    var videoduration = videoduration;
+  }else {
+    var videoduration = DownloadDefaultCountTime;
+  }
+
+   // alert(videoduration);
+  
+  // var count = 10,        
+  var count = videoduration,
+  countdown = setInterval(function() {          
+  $("download").hide();
+  $countdown.html("Wait " + count + " seconds to get Dwnload Link!").show("flast"); 
+  
+  
+  if (count == 0) {
+  
+  //Enable all clicks
+  document.getElementById("YouTube-player").style['pointer-events'] = 'auto';
+  document.getElementById("click-permission-1").style['pointer-events'] = 'auto';         
+  document.getElementById("click-permission-2").style['pointer-events'] = 'auto';         
+  
+  $(".download").hide();
+  $countdown.hide();
+  // $link.html('<a href="' +DownloadSrc+ '">Go to Download File</a>');
+  
+  $link.html('<strong>Congratulations!</strong> <br> ' +
+  '<strong>redirecting to your destination link in 10s...</strong> <br> ' + '<a href="' +DownloadSrc+ '">Go to Direct Link</a>');
+setTimeout(function() {
+    window.location.replace(DownloadSrc)
+},10000);  //change the time value accordingly
+
+  clearInterval(countdown);
+  } 
+  count--; 
+  }, 1000);
+  });
+  //  });
+  });
+  </script>
+  </div>
+  
+  
+  <section class="features">
+  
+  <style>
+.submitableimage {
+   width: 100%;
+   max-width:auto;
+   height: auto;
+  }
+
+  .cartItemsList {
+   /*
+  position: relative;
+  border: 2px solid green;
+   */
+  }
+
+  .feature-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+
+  .feature-container:hover {
+  border: 2px solid rgb(108, 226, 108);
+  }
+
+  h2 {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  }
+  </style>
+  
+  <div id="cartItemsList" class="cartItemsList" >
+  </div>
+  
+  <!--
+    <div class="feature-container">
+      <img src="https://cdn-images-1.medium.com/max/2000/1*HFAEJvVOq4AwFuBivNu_OQ.png" alt="Flexbox Feature">
+      <h2>Flexbox Featured</h2>
+      <p>This pen contains use of flexbox for the headline and feature section! We use it in our mobile navbar and show the power of mixing css grid and flexbox.</p>
+    </div>
+    <div class="feature-container">
+      <img src="https://blog.webix.com/wp-content/uploads/2017/06/20170621-CSS-Grid-Layout-710x355-tiny.png" alt="Flexbox Feature">
+      <h2>CSS Grid Navigation</h2>
+      <p>While flexbox is used for the the mobile navbar, CSS grid is used for the desktop navbar showing many ways we can use both.</p>
+    </div>
+    <div class="feature-container">
+      <img src="https://www.graycelltech.com/wp-content/uploads/2015/06/GCT-HTML5.jpg" alt="Flexbox Feature">
+      <h2>Basic HTML5</h2>
+      <p>This pen contains basic html to setup the page to display the responsive navbar.</p>
+    </div>
+  -->
+    
+  </section>
+  
+  
+</div>
+
+<style>
+.yt-channel, .copyright {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    align-items: center;
+    justify-content: center;
+    }
+</style>
+
+<!-- YT Channel -->
+<div style="padding-top:5px;" class="yt-channel">
+  <script src="https://apis.google.com/js/platform.js"></script>
+  <div class="g-ytsubscribe" data-channelid="UCMMS04AArq9iMUnXFsT8ybA" data-layout="full" data-count="hidden"></div><br/>
+</div>
+<br/></br>
+
+<!-- © -->
+<font size="-1" class="copyright">
+  <a style="background-color:rgb(255, 252, 252); border-radius: 5px;
+  color: #333333;" href="https://youtube.com/channel/UCMMS04AArq9iMUnXFsT8ybA"> © <script>document.write(new Date().getFullYear())</script> TR Coder •</a>
+</font>
+</div>
+
+
+<script>
+/* Please put your Google Sheets API URL below*/
+var GoogleSheetsAPI = "https://sheets.googleapis.com/v4/spreadsheets/1POXHQJpT7-WiwNMCbVFyL5vcW8L9f47u8ZwyITNcLP8/values/Sheet1?alt=json&key=AIzaSyCSCqmlMbokuMA51OmnYCGObtGnFhehy0c";
+
+/* this tells the page to wait until jQuery has loaded, so you can use the Ajax call */
+
+$(document).ready(function(){
+  $.ajax({
+    url: GoogleSheetsAPI,
+    dataType: 'json',
+      error: function(){
+        alert('API FAILED to load sheets json');
+      },
+    success:function(results){
+  /* the results is your json, you can reference the elements directly by using it here, without creating any additional variables */
+//  alert(results.values);
+
+// get the YouTube video ID from a URL
+function youtube_parser(url){
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    var match = url.match(regExp);
+    return (match&&match[7].length==11)? match[7] : false;
+}
+
+      var cartItemsList = document.getElementById("cartItemsList");
+
+      results.values.forEach(function(element) {
+     
+     var ytid =  youtube_parser(element[1]);
+      // alert(ytid);
+     
+  //  cartItemsList.insertAdjacentHTML( 'beforeend',"<li>" + element+ " </li>");
+      
+      cartItemsList.insertAdjacentHTML( 'beforeend', 
+      `<div class="feature-container profile">
+      <form action="./index.html" method="get" id="myform">
+       <input type="hidden" name="ytVideoTitle" value="` +element[0]+ `">
+       <input type="hidden" name="ytVideoFullURL" value="` +element[1]+ `">
+       <input type="hidden" name="videoLoadingTime" value="` +element[2]+ `">
+       <input type="hidden" name="liveDemoDefaultCountTime" value="` +element[3]+ `">
+       <input type="hidden" name="liveDemoSrc" value="` +element[4]+ `">
+       <input type="hidden" name="DownlodFileName" value="` +element[5]+ `">
+       <input type="hidden" name="DownloadFileType" value="` +element[6]+ `">
+       <input type="hidden" name="DownloadFileSize" value="` +element[7]+ `">
+       <input type="hidden" name="ShowDownloadFileSize" value="` +element[8]+ `">
+       <input type="hidden" name="DownloadDefaultCountTime" value="` +element[9]+ `">
+       <input type="hidden" name="DownloadSrc" value="` +element[10]+ `">
+      <button onclick="scrollToTop();" name="submit" value="true">         
+      <img class="submitableimage" width="600" height="400" src="https://i.ytimg.com/vi/` +ytid+ `/hqdefault.jpg" alt="Thumbnail" >  
+      </form>
+      <h2 class="name">` +element[0]+ `</h2>
+      <br>     
+  </button>
+      </div><br><br/>`      
+      );
+      
+      
+      }); // end of forEach
+    }  // end of success fn
+   }) // end of Ajax call
+ }) // end of $(document).ready() function
+ 
+ 
+ var issetsubmit = resultValue("submit");
+ 
+ if(issetsubmit = "true") {
+ var x = document.getElementById("ply-btn");
+x.style.display = "none";
+
+ var x = document.getElementById("headline");
+ x.style.display = "none";
+ 
+ var x = document.getElementById("TR-Coder-player-page");
+ x.style.display = "block";
+ }
+ 
+ function pause_music() { 
+ document.getElementsByTagName('audio')[0].removeAttribute('autoplay');
+ var music = document.querySelector("audio");
+ music.pause();
+ }
+ 
+ function scrollToTop() { 
+ // To Top
+   window.scrollTo(0, 0); 
+ //To Bottom
+// window.scrollTo(0,document.body.scrollHeight);
+ } 
+ 
+</script>
+<!-- partial -->
+  
+  <script>
+  $("#search-icon").click(function() {
+  $(".nav").toggleClass("search");
+  $(".nav").toggleClass("no-search");
+  $(".search-input").toggleClass("search-active");
+  });
+  
+  $('.menu-toggle').click(function(){
+  $(".nav").toggleClass("mobile-nav");
+  $(this).toggleClass("is-active");
+  });
+  </script>
+
+
+<script  src="./include/custom-search-filter/script.js"></script>
+</body>
+</html>
