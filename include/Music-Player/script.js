@@ -19,7 +19,7 @@ const button = document.querySelector("#ply-btn");
  
  
 /* Please put your Google Drive API URL below*/
-var GoogleDriveAPI = "https://www.googleapis.com/drive/v3/files?q=%" +Folder_ID+ "%27+in+parents&key=" +Api_Key;
+var GoogleDriveAPI = "https://www.googleapis.com/drive/v3/files?q=%" +Folder_ID+ "%27+in+parents&key=" +Api_Key+ "&pageSize=1000";
 
 /* this tells the page to wait until jQuery has loaded, so you can use the Ajax call */
 $(document).ready(function(){
@@ -39,23 +39,20 @@ $(document).ready(function(){
     }); // end of forEach
  */ 
     
- 
+ /*
    var list = results.files.map(function(item) {
    return "https://drive.google.com/uc?export=download&confirm=yTib&id=" +item.id;
    }).join(', ');
    
    // alert(list);
- 
+ */
  
  // https://www.googleapis.com/drive/v3/files/{my file ID}?alt=media&key={my API key}
-/*
  var list = results.files.map(function(item) {
  return "https://www.googleapis.com/drive/v3/files/" +item.id+ "?alt=media&key=" +Api_Key;
  }).join(', ');
  
   //alert(list);
- */
- 
  
 var audioSources = list.split(',');
 let audioSource = audioSources[Math.floor(Math.random() * audioSources.length)];
