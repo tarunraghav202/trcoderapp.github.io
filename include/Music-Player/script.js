@@ -39,21 +39,22 @@ $(document).ready(function(){
     }); // end of forEach
  */ 
     
- /*
+ 
    var list = results.files.map(function(item) {
    return "https://drive.google.com/uc?export=download&confirm=yTib&id=" +item.id;
    }).join(', ');
    
    // alert(list);
- */
+ 
  
  // https://www.googleapis.com/drive/v3/files/{my file ID}?alt=media&key={my API key}
+/*
  var list = results.files.map(function(item) {
  return "https://www.googleapis.com/drive/v3/files/" +item.id+ "?alt=media&key=" +Api_Key;
  }).join(', ');
  
   //alert(list);
- 
+ */
  
  
 var audioSources = list.split(',');
