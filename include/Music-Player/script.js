@@ -43,7 +43,8 @@ $(document).ready(function(){
    return "https://drive.google.com/uc?export=download&confirm=yTib&id=" +item.id;
    }).join(', ');
    
-   // alert(list);
+   // 
+      alert(list);
   
 var audioSources = list.split(',');
 let audioSource = audioSources[Math.floor(Math.random() * audioSources.length)];
